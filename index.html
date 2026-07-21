@@ -11,7 +11,9 @@
     <meta name="description"
         content="Premium portfolio of Apurbo Podder - 3D Designer specializing in Eyewear Design, Product Visualization and CAD Modeling.">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css"><script type="module"
+src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+</script>
 
 </head>
 
@@ -315,9 +317,43 @@
 
     </div>
 
-    <img class="hero-image"
-         src="assets/images/4.jpg"
-         alt="Luxury Eyewear">
+    <div class="viewer-wrapper">
+
+<model-viewer
+
+class="project-viewer"
+
+src="assets/models/112998 - glb.glb"
+
+camera-controls
+
+touch-action="pan-y"
+
+auto-rotate
+
+auto-rotate-delay="3000"
+
+rotation-per-second="20deg"
+
+shadow-intensity="1.5"
+
+environment-image="neutral"
+
+exposure="1.2"
+
+interaction-prompt="auto"
+
+loading="eager"
+
+>
+
+</model-viewer>
+
+</div>
+
+<img class="hero-image"
+src="assets/images/4.jpg"
+alt="Luxury Eyewear">
 
     <div class="project-specs">
 
