@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Apurbo Podder | 3D Designer</title>
+
+    <meta name="description"
+        content="Premium portfolio of Apurbo Podder - 3D Designer specializing in Eyewear Design, Product Visualization and CAD Modeling.">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            <h1>Apurbo Podder</h1>
+        </div>
+
+        <nav>
+
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+
+            <span class="hero-tag">
+                PRODUCT DESIGN • 3D VISUALIZATION • EYEWEAR
+            </span>
+
+            <h2>
+                Designing Products <br>
+                With Precision.
+            </h2>
+
+            <p>
+
+                Premium 3D product design, visualization,
+                CAD development and eyewear design.
+
+            </p>
+
+            <a href="#work" class="btn">
+                View Projects
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PROJECTS ================= -->
+
+    <section id="work">
+
+        <div class="section-title">
+
+            <span>Portfolio</span>
+
+            <h2>Selected Projects</h2>
+
+        </div>
+
+
+
+        <div class="grid">
+
+            <!-- PROJECT 1 -->
+
+            <article class="card" data-project="1">
+
+                <img src="assets/images/4.jpg" alt="Luxury Eyewear">
+
+                <div class="card-content">
+
+                    <span>Rhino 8 • Blender</span>
+
+                    <h3>Luxury Eyewear</h3>
+
+                    <p>
+                        Premium acetate eyewear concept.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 2 -->
+
+            <article class="card" data-project="2">
+
+                <img src="assets/images/BG2.jpg" alt="Eyewear">
+
+                <div class="card-content">
+
+                    <span>Rhino 8 • Blender</span>
+
+                    <h3>Metal Frame Concept</h3>
+
+                    <p>
+
+                        Luxury optical frame visualization.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 3 -->
+
+            <article class="card" data-project="3">
+
+                <img src="assets/images/BG3.jpg" alt="Eyewear">
+
+                <div class="card-content">
+
+                    <span>Rhino 8 • Blender</span>
+
+                    <h3>Fashion Collection</h3>
+
+                    <p>
+
+                        Modern eyewear design language.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 4 -->
+
+            <article class="card" data-project="4">
+
+                <img src="assets/images/BG4.jpg" alt="Eyewear">
+
+                <div class="card-content">
+
+                    <span>Rhino 8 • Blender</span>
+
+                    <h3>Premium Collection</h3>
+
+                    <p>
+
+                        High-end concept visualization.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about">
+
+        <div class="about-container">
+
+            <span>About</span>
+
+            <h2>Design Meets Engineering</h2>
+
+            <p>
+
+                I am <strong>Apurbo Podder</strong>, a 3D Designer dedicated to
+                transforming ideas into meticulously crafted digital products.
+                My work lies at the intersection of precision engineering and
+                refined aesthetics, specializing in eyewear design,
+                product visualization, and high-fidelity CAD modeling.
+
+            </p>
+
+            <p>
+
+                Every project is approached with uncompromising attention
+                to detail—from concept development to the final render.
+                I believe exceptional products emerge from clarity,
+                craftsmanship and purposeful design.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section id="contact">
+
+        <div class="contact-box">
+
+            <span>Let's Work Together</span>
+
+            <h2>Get In Touch</h2>
+
+            <p>
+
+                Interested in collaborating on product design,
+                eyewear development or visualization?
+
+            </p>
+
+            <a href="mailto:apurbo.podder26@gmail.com" class="btn">
+
+                apurbo.podder26@gmail.com
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        © 2026 Apurbo Podder · 3D Designer
+
+    </footer>
+
+
+
+    <!-- ================= PROJECT MODAL ================= -->
+
+    <div id="projectModal" class="modal">
+
+        <div class="modal-overlay"></div>
+
+        <div class="modal-content">
+
+            <button id="closeModal" class="close">
+
+                ×
+
+            </button>
+
+            <button id="prevProject" class="nav-btn left">
+
+                ←
+
+            </button>
+
+            <button id="nextProject" class="nav-btn right">
+
+                →
+
+            </button>
+
+            <div id="modalBody">
+
+                <!-- Filled automatically with JavaScript -->
+
+            </div>
+
+        </div>
+
+    </div>
+<template id="project1">
+
+<div class="modal-project">
+
+    <div class="project-header">
+
+        <span class="project-category">Luxury Eyewear Design</span>
+
+        <h1>Luxury Eyewear</h1>
+
+        <p class="project-intro">
+
+            A premium acetate eyewear concept designed with an emphasis on
+            timeless proportions, refined surfacing, and production-ready
+            detailing. The project combines industrial design principles with
+            luxury aesthetics for high-end optical and fashion markets.
+
+        </p>
+
+    </div>
+
+    <img class="hero-image"
+         src="assets/images/4.jpg"
+         alt="Luxury Eyewear">
+
+    <div class="project-specs">
+
+        <div class="spec">
+            <h3>Software</h3>
+            <p>Rhino 8</p>
+        </div>
+
+        <div class="spec">
+            <h3>Rendering</h3>
+            <p>Blender</p>
+        </div>
+
+        <div class="spec">
+            <h3>Year</h3>
+            <p>2026</p>
+        </div>
+
+        <div class="spec">
+            <h3>Category</h3>
+            <p>Luxury Product Design</p>
+        </div>
+
+    </div>
+
+    <section class="project-section">
+
+        <h2>Overview</h2>
+
+        <p>
+
+            Every curve was developed with attention to manufacturability,
+            comfort, and premium visual balance. The model was created in
+            Rhino 8 using Class-A style surfacing techniques before being
+            rendered in Blender with realistic materials and studio lighting.
+
+        </p>
+
+    </section>
+
+    <section class="project-section">
+
+        <h2>Gallery</h2>
+
+        <div class="modal-gallery">
+
+            <div class="gallery-item">
+                <img src="assets/images/4/1.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/4/2.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/4/3.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/4/5.jpg" alt="">
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</template>
+
+<template id="project2">
+
+<div class="modal-project">
+
+    <div class="project-header">
+
+        <span class="project-category">Luxury Eyewear Design</span>
+
+        <h1>Luxury Eyewear</h1>
+
+        <p class="project-intro">
+
+            A premium acetate eyewear concept designed with an emphasis on
+            timeless proportions, refined surfacing, and production-ready
+            detailing. The project combines industrial design principles with
+            luxury aesthetics for high-end optical and fashion markets.
+
+        </p>
+
+    </div>
+
+    <img class="hero-image"
+         src="assets/images/BG2.jpg"
+         alt="Luxury Eyewear">
+
+    <div class="project-specs">
+
+        <div class="spec">
+            <h3>Software</h3>
+            <p>Rhino 8</p>
+        </div>
+
+        <div class="spec">
+            <h3>Rendering</h3>
+            <p>Blender</p>
+        </div>
+
+        <div class="spec">
+            <h3>Year</h3>
+            <p>2026</p>
+        </div>
+
+        <div class="spec">
+            <h3>Category</h3>
+            <p>Luxury Product Design</p>
+        </div>
+
+    </div>
+
+    <section class="project-section">
+
+        <h2>Overview</h2>
+
+        <p>
+
+            Every curve was developed with attention to manufacturability,
+            comfort, and premium visual balance. The model was created in
+            Rhino 8 using Class-A style surfacing techniques before being
+            rendered in Blender with realistic materials and studio lighting.
+
+        </p>
+
+    </section>
+
+    <section class="project-section">
+
+        <h2>Gallery</h2>
+
+        <div class="modal-gallery">
+
+            <div class="gallery-item">
+                <img src="assets/images/BG2/1.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/BG2/2.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/BG2/3.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/BG2/4.jpg" alt="">
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</template>
+
+<template id="project3">
+
+<div class="modal-project">
+
+    <div class="project-header">
+
+        <span class="project-category">Luxury Eyewear Design</span>
+
+        <h1>Luxury Eyewear</h1>
+
+        <p class="project-intro">
+
+            A premium acetate eyewear concept designed with an emphasis on
+            timeless proportions, refined surfacing, and production-ready
+            detailing. The project combines industrial design principles with
+            luxury aesthetics for high-end optical and fashion markets.
+
+        </p>
+
+    </div>
+
+    <img class="hero-image"
+         src="assets/images/BG4.jpg"
+         alt="Luxury Eyewear">
+
+    <div class="project-specs">
+
+        <div class="spec">
+            <h3>Software</h3>
+            <p>Rhino 8</p>
+        </div>
+
+        <div class="spec">
+            <h3>Rendering</h3>
+            <p>Blender</p>
+        </div>
+
+        <div class="spec">
+            <h3>Year</h3>
+            <p>2026</p>
+        </div>
+
+        <div class="spec">
+            <h3>Category</h3>
+            <p>Luxury Product Design</p>
+        </div>
+
+    </div>
+
+    <section class="project-section">
+
+        <h2>Overview</h2>
+
+        <p>
+
+            Every curve was developed with attention to manufacturability,
+            comfort, and premium visual balance. The model was created in
+            Rhino 8 using Class-A style surfacing techniques before being
+            rendered in Blender with realistic materials and studio lighting.
+
+        </p>
+
+    </section>
+
+    <section class="project-section">
+
+        <h2>Gallery</h2>
+
+        <div class="modal-gallery">
+
+            <div class="gallery-item">
+                <img src="assets/images/BG4/1.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/BG4/2.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/BG4/3.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/BG4/4.jpg" alt="">
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</template>
+
+<template id="project4">
+
+<div class="modal-project">
+
+    <div class="project-header">
+
+        <span class="project-category">Luxury Eyewear Design</span>
+
+        <h1>Luxury Eyewear</h1>
+
+        <p class="project-intro">
+
+            A premium acetate eyewear concept designed with an emphasis on
+            timeless proportions, refined surfacing, and production-ready
+            detailing. The project combines industrial design principles with
+            luxury aesthetics for high-end optical and fashion markets.
+
+        </p>
+
+    </div>
+
+    <img class="hero-image"
+         src="assets/images/BG5.jpg"
+         alt="Luxury Eyewear">
+
+    <div class="project-specs">
+
+        <div class="spec">
+            <h3>Software</h3>
+            <p>Rhino 8</p>
+        </div>
+
+        <div class="spec">
+            <h3>Rendering</h3>
+            <p>Blender</p>
+        </div>
+
+        <div class="spec">
+            <h3>Year</h3>
+            <p>2026</p>
+        </div>
+
+        <div class="spec">
+            <h3>Category</h3>
+            <p>Luxury Product Design</p>
+        </div>
+
+    </div>
+
+    <section class="project-section">
+
+        <h2>Overview</h2>
+
+        <p>
+
+            Every curve was developed with attention to manufacturability,
+            comfort, and premium visual balance. The model was created in
+            Rhino 8 using Class-A style surfacing techniques before being
+            rendered in Blender with realistic materials and studio lighting.
+
+        </p>
+
+    </section>
+
+    <section class="project-section">
+
+        <h2>Gallery</h2>
+
+        <div class="modal-gallery">
+
+            <div class="gallery-item">
+                <img src="assets/images/BG5/2.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/BG5/3.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/BG5/4.jpg" alt="">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/images/BG5/5.jpg" alt="">
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+</template>
+
+<!-- ================= IMAGE VIEWER ================= -->
+
+<div id="imageViewer" class="image-viewer">
+
+    <button id="closeViewer" class="viewer-close">✕</button>
+
+    <button id="viewerPrev" class="viewer-nav left">❮</button>
+
+    <img id="viewerImage" src="" alt="">
+
+    <button id="viewerNext" class="viewer-nav right">❯</button>
+
+</div>
+    <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>
