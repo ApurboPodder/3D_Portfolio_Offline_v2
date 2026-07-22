@@ -913,102 +913,111 @@ FULLSCREEN IMAGE VIEWER
 
 .image-viewer{
 
-    position:fixed;
-    inset:0;
+position:fixed;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+inset:0;
 
-    background:rgba(0,0,0,.96);
+background:rgba(0,0,0,.95);
 
-    opacity:0;
-    visibility:hidden;
+display:flex;
 
-    transition:.3s ease;
+justify-content:center;
 
-    z-index:99999;
+align-items:center;
+
+z-index:99999;
+
+opacity:0;
+
+visibility:hidden;
+
+transition:.35s;
+
+overflow:hidden;
 
 }
 
 .image-viewer.active{
 
-    opacity:1;
-    visibility:visible;
+opacity:1;
+
+visibility:visible;
 
 }
 
-.image-viewer img{
+#viewerImage{
 
-    max-width:92vw;
-    max-height:90vh;
+max-width:90%;
 
-    border-radius:14px;
+max-height:90%;
 
-    object-fit:contain;
+cursor:grab;
 
-    animation:viewerFade .35s ease;
+transform-origin:center;
 
-}
+transition:transform .08s linear;
 
-@keyframes viewerFade{
-
-    from{
-
-        transform:scale(.92);
-        opacity:0;
-
-    }
-
-    to{
-
-        transform:scale(1);
-        opacity:1;
-
-    }
+user-select:none;
 
 }
-
-/* Close Button */
 
 .viewer-close{
 
-    position:fixed;
+position:absolute;
 
-    top:20px;
-    right:20px;
+top:25px;
 
-    width:56px;
-    height:56px;
+right:35px;
 
-    border:none;
+font-size:42px;
 
-    border-radius:50%;
+color:white;
 
-    background:rgba(20,20,20,.9);
-
-    color:#fff;
-
-    font-size:30px;
-
-    cursor:pointer;
-
-    z-index:100000;
-
-    transition:.3s;
+cursor:pointer;
 
 }
 
-.viewer-close:hover{
+.viewer-prev,
 
-    background:#fff;
+.viewer-next{
 
-    color:#000;
+position:absolute;
 
-    transform:rotate(90deg);
+top:50%;
+
+transform:translateY(-50%);
+
+background:rgba(255,255,255,.08);
+
+border:none;
+
+color:white;
+
+font-size:42px;
+
+width:60px;
+
+height:60px;
+
+cursor:pointer;
+
+backdrop-filter:blur(10px);
+
+border-radius:50%;
 
 }
-/* Viewer Navigation */
+
+.viewer-prev{
+
+left:30px;
+
+}
+
+.viewer-next{
+
+right:30px;
+
+}/* Viewer Navigation */
 
 .viewer-nav{
 
@@ -1059,29 +1068,17 @@ FULLSCREEN IMAGE VIEWER
 
 }
 .viewer-wrapper{
-
-width:100%;
-
-height:700px;
-
-background:#111;
-
-border-radius:18px;
-
-overflow:hidden;
-
-margin:40px 0;
-
-box-shadow:0 25px 80px rgba(0,0,0,.45);
-
+    width:100%;
+    height:700px;
+    margin:50px 0;
+    border-radius:22px;
+    overflow:hidden;
+    background:linear-gradient(180deg,#111,#050505);
+    box-shadow:0 25px 80px rgba(0,0,0,.45);
 }
 
 .project-viewer{
-
-width:100%;
-
-height:100%;
-
-background:#111;
-
+    width:100%;
+    height:100%;
+    background:transparent;
 }
