@@ -579,7 +579,7 @@
 
                     </p>
 
-                    <a href="index.html#work" class="btn">
+                    <a href="#" class="btn project-open-btn" data-project="0" onclick="openProfileProject(0); return false;">
 
                         View Project
 
@@ -606,7 +606,7 @@
 
                     </p>
 
-                    <a href="index.html#work" class="btn">
+                    <a href="#" class="btn project-open-btn" data-project="1" onclick="openProfileProject(1); return false;">
 
                         View Project
 
@@ -672,6 +672,26 @@
 
 
 
+    <!-- ================= PROJECT MODAL ================= -->
+
+    <div id="profileProjectModal" class="modal">
+
+        <div class="modal-overlay"></div>
+
+        <div class="modal-content">
+
+            <button id="closeProfileModal" class="close">×</button>
+
+            <button id="prevProfileProject" class="nav-btn left">←</button>
+
+            <button id="nextProfileProject" class="nav-btn right">→</button>
+
+            <div id="profileModalBody"></div>
+
+        </div>
+
+    </div>
+
     <!-- ================= SCROLL ANIMATION ================= -->
 
     <script>
@@ -697,6 +717,174 @@
     document.querySelectorAll("section").forEach(section=>{
 
         observer.observe(section);
+
+    });
+
+    const profileModal = document.getElementById("profileProjectModal");
+    const profileModalBody = document.getElementById("profileModalBody");
+    const closeProfileModal = document.getElementById("closeProfileModal");
+    const prevProfileProject = document.getElementById("prevProfileProject");
+    const nextProfileProject = document.getElementById("nextProfileProject");
+
+    const profileProjects = [
+
+        {
+            title: "Premium Acetate Collection",
+            category: "Luxury Eyewear Design",
+            intro: "A production-ready eyewear concept shaped by precise CAD modeling, refined proportions and premium visual storytelling.",
+            hero: "assets/images/4.jpg",
+            software: "Rhino 8",
+            rendering: "Blender",
+            year: "2026",
+            categoryDetail: "Luxury Product Design",
+            overview: "This project combines engineering precision and luxury aesthetics to create a timeless eyewear concept suitable for high-end branding and presentation.",
+            gallery: [
+                "assets/images/4.jpg",
+                "assets/images/BG2.jpg",
+                "assets/images/BG3.jpg",
+                "assets/images/BG4.jpg"
+            ]
+        },
+        {
+            title: "Metal Frame Concept",
+            category: "Product Visualization",
+            intro: "An elevated optical frame concept focused on clean geometry, lightweight structure and realistic rendering quality.",
+            hero: "assets/images/BG2.jpg",
+            software: "Rhino 8",
+            rendering: "Blender",
+            year: "2026",
+            categoryDetail: "Optical Design",
+            overview: "The concept explores modern metallic aesthetics, functional comfort and material realism through carefully crafted design details.",
+            gallery: [
+                "assets/images/BG2.jpg",
+                "assets/images/BG3.jpg",
+                "assets/images/BG4.jpg",
+                "assets/images/4.jpg"
+            ]
+        }
+
+    ];
+
+    let currentProfileProject = 0;
+
+    function renderProfileProject(index) {
+
+        const project = profileProjects[index];
+
+        if (!project) return;
+
+        currentProfileProject = index;
+
+        profileModalBody.innerHTML = `
+            <div class="modal-project">
+                <div class="project-header">
+                    <span class="project-category">${project.category}</span>
+                    <h1>${project.title}</h1>
+                    <p class="project-intro">${project.intro}</p>
+                </div>
+
+                <img class="hero-image" src="${project.hero}" alt="${project.title}">
+
+                <div class="project-specs">
+                    <div class="spec">
+                        <h3>Software</h3>
+                        <p>${project.software}</p>
+                    </div>
+                    <div class="spec">
+                        <h3>Rendering</h3>
+                        <p>${project.rendering}</p>
+                    </div>
+                    <div class="spec">
+                        <h3>Year</h3>
+                        <p>${project.year}</p>
+                    </div>
+                    <div class="spec">
+                        <h3>Category</h3>
+                        <p>${project.categoryDetail}</p>
+                    </div>
+                </div>
+
+                <section class="project-section">
+                    <h2>Overview</h2>
+                    <p>${project.overview}</p>
+                </section>
+
+                <section class="project-section">
+                    <h2>Gallery</h2>
+                    <div class="modal-gallery">
+                        ${project.gallery.map(src => `
+                            <div class="gallery-item">
+                                <img src="${src}" alt="${project.title}">
+                            </div>
+                        `).join("")}
+                    </div>
+                </section>
+            </div>
+        `;
+
+    }
+
+    function openProfileProject(index) {
+
+        renderProfileProject(index);
+        profileModal.classList.add("active");
+        profileModal.style.visibility = "visible";
+        profileModal.style.opacity = "1";
+        document.body.style.overflow = "hidden";
+
+    }
+
+    function closeProfileProject() {
+
+        profileModal.classList.remove("active");
+        profileModal.style.visibility = "hidden";
+        profileModal.style.opacity = "0";
+        document.body.style.overflow = "";
+
+    }
+
+    window.openProfileProject = openProfileProject;
+    window.closeProfileProject = closeProfileProject;
+
+    closeProfileModal.addEventListener("click", closeProfileProject);
+
+    prevProfileProject.addEventListener("click", () => {
+
+        const nextIndex = (currentProfileProject - 1 + profileProjects.length) % profileProjects.length;
+        openProfileProject(nextIndex);
+
+    });
+
+    nextProfileProject.addEventListener("click", () => {
+
+        const nextIndex = (currentProfileProject + 1) % profileProjects.length;
+        openProfileProject(nextIndex);
+
+    });
+
+    profileModal.addEventListener("click", (event) => {
+
+        if (event.target === profileModal || event.target.classList.contains("modal-overlay")) {
+            closeProfileProject();
+        }
+
+    });
+
+    document.addEventListener("keydown", (event) => {
+
+        if (event.key === "Escape") {
+            closeProfileProject();
+        }
+
+        if (profileModal.classList.contains("active") && event.key === "ArrowRight") {
+            const nextIndex = (currentProfileProject + 1) % profileProjects.length;
+            openProfileProject(nextIndex);
+        }
+
+        if (profileModal.classList.contains("active") && event.key === "ArrowLeft") {
+            const nextIndex = (currentProfileProject - 1 + profileProjects.length) % profileProjects.length;
+            openProfileProject(nextIndex);
+        }
 
     });
 

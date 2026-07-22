@@ -365,6 +365,172 @@ const viewer = document.getElementById("imageViewer");
 const viewerImage = document.getElementById("viewerImage");
 const closeViewer = document.getElementById("closeViewer");
 
+let zoomLevel = 1;
+let startX = 0;
+let startY = 0;
+let isDragging = false;
+let isPinching = false;
+let pinchStartDistance = 0;
+let pinchStartZoom = 1;
+let currentTranslateX = 0;
+let currentTranslateY = 0;
+
+function resetViewerTransform(){
+
+    zoomLevel = 1;
+    currentTranslateX = 0;
+    currentTranslateY = 0;
+    viewerImage.style.transform = "translate(0px, 0px) scale(1)";
+
+}
+
+function setViewerImage(src){
+
+    viewerImage.src = src;
+    resetViewerTransform();
+
+}
+
+viewerImage.addEventListener("wheel", function(e){
+
+    e.preventDefault();
+
+    const delta = e.deltaY > 0 ? -0.1 : 0.1;
+    const nextZoom = Math.min(3, Math.max(1, zoomLevel + delta));
+
+    zoomLevel = nextZoom;
+    viewerImage.style.transform = `translate(${currentTranslateX}px, ${currentTranslateY}px) scale(${zoomLevel})`;
+
+}, { passive: false });
+
+viewerImage.addEventListener("mousedown", function(e){
+
+    if(zoomLevel <= 1) return;
+
+    isDragging = true;
+    startX = e.clientX - currentTranslateX;
+    startY = e.clientY - currentTranslateY;
+
+});
+
+window.addEventListener("mousemove", function(e){
+
+    if(!isDragging) return;
+
+    currentTranslateX = e.clientX - startX;
+    currentTranslateY = e.clientY - startY;
+    viewerImage.style.transform = `translate(${currentTranslateX}px, ${currentTranslateY}px) scale(${zoomLevel})`;
+
+});
+
+window.addEventListener("mouseup", function(){
+
+    isDragging = false;
+
+});
+
+viewerImage.addEventListener("touchstart", function(e){
+
+    if(e.touches.length === 2){
+
+        isPinching = true;
+        pinchStartDistance = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+        );
+        pinchStartZoom = zoomLevel;
+
+    } else if(e.touches.length === 1 && zoomLevel > 1){
+
+        isDragging = true;
+        startX = e.touches[0].clientX - currentTranslateX;
+        startY = e.touches[0].clientY - currentTranslateY;
+
+    }
+
+}, { passive: false });
+
+viewerImage.addEventListener("touchmove", function(e){
+
+    if(e.touches.length === 2 && isPinching){
+
+        e.preventDefault();
+
+        const distance = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+        );
+
+        const ratio = distance / pinchStartDistance;
+        zoomLevel = Math.min(3, Math.max(1, pinchStartZoom * ratio));
+        viewerImage.style.transform = `translate(${currentTranslateX}px, ${currentTranslateY}px) scale(${zoomLevel})`;
+
+    } else if(e.touches.length === 1 && isDragging){
+
+        e.preventDefault();
+        currentTranslateX = e.touches[0].clientX - startX;
+        currentTranslateY = e.touches[0].clientY - startY;
+        viewerImage.style.transform = `translate(${currentTranslateX}px, ${currentTranslateY}px) scale(${zoomLevel})`;
+
+    }
+
+}, { passive: false });
+
+viewerImage.addEventListener("touchend", function(){
+
+    isDragging = false;
+    isPinching = false;
+
+});
+
+function setupImageZoomHover(){
+
+    const zoomTargets = document.querySelectorAll(".hero-image, .modal-project > img");
+
+    zoomTargets.forEach((img)=>{
+
+        if(img.closest(".image-zoom-wrapper")) return;
+
+        const wrapper = document.createElement("div");
+
+        wrapper.className = "image-zoom-wrapper";
+
+        img.parentNode.insertBefore(wrapper, img);
+
+        wrapper.appendChild(img);
+
+        img.addEventListener("mouseenter", function(){
+
+            img.style.transform = "scale(2)";
+
+        });
+
+        img.addEventListener("mousemove", function(e){
+
+            const rect = img.getBoundingClientRect();
+
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+            img.style.transformOrigin = `${x}% ${y}%`;
+
+        });
+
+        img.addEventListener("mouseleave", function(){
+
+            img.style.transform = "scale(1)";
+
+            img.style.transformOrigin = "center center";
+
+        });
+
+    });
+
+}
+
+document.addEventListener("DOMContentLoaded", setupImageZoomHover);
+
 // Enable click on gallery images
 function enableImageViewer(){
 
@@ -384,7 +550,7 @@ function enableImageViewer(){
 
             currentImage=index;
 
-            viewerImage.src=currentGallery[currentImage];
+            setViewerImage(currentGallery[currentImage]);
 
             viewer.classList.add("active");
 
@@ -467,7 +633,7 @@ viewerNext.onclick=function(){
 
     }
 
-    viewerImage.src=currentGallery[currentImage];
+    setViewerImage(currentGallery[currentImage]);
 
 };
 
@@ -481,6 +647,6 @@ viewerPrev.onclick=function(){
 
     }
 
-    viewerImage.src=currentGallery[currentImage];
+    setViewerImage(currentGallery[currentImage]);
 
 };

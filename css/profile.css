@@ -677,6 +677,80 @@ html{
     }
 
 }
+
+/* =====================================================
+   RESPONSIVE ADJUSTMENTS
+===================================================== */
+
+@media (max-width: 900px){
+
+    .grid{
+
+        grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
+
+        gap:24px;
+
+    }
+
+    .featured-projects{
+
+        padding:120px 6%;
+
+    }
+
+    .featured-projects img{
+
+        height:360px;
+
+    }
+
+}
+
+@media (max-width: 640px){
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .card-content,
+    .featured-projects .card-content{
+
+        padding:28px 24px;
+
+    }
+
+    .card-content h3,
+    .featured-projects h3{
+
+        font-size:26px;
+
+    }
+
+    .card-content p,
+    .featured-projects p{
+
+        font-size:15px;
+
+        line-height:1.7;
+
+    }
+
+    .featured-projects{
+
+        padding:100px 5% 120px;
+
+    }
+
+    .featured-projects img{
+
+        height:280px;
+
+    }
+
+}
+
 /* =====================================================
    FEATURED PROJECTS
 ===================================================== */
@@ -704,6 +778,10 @@ html{
     border:1px solid rgba(255,255,255,.08);
 
     transition:.5s;
+
+    position:relative;
+
+    isolation:isolate;
 
 }
 
